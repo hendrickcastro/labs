@@ -1,0 +1,27 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - 8080:8080
+      - 50001:50000
+    volumes:
+      - $PWD/data:/var/jenkins_home
+      # - /var/run/docker.sock:/var/run/docker.sock
+    # environment:
+    #   - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
+    #   - JENKINS_OPTS=--prefix=/jenkins
+    restart: always
+    networks:
+      - jenkins
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+      context: centos7
+    networks:
+      - jenkins
+networks:
+  jenkins:
+    driver: bridge
