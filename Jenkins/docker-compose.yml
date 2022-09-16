@@ -19,7 +19,7 @@ services:
     container_name: remote-host
     image: remote-host
     build:
-      context: centos7
+      context: ./resources/centos7
     networks:
       - jenkins
 networks:
