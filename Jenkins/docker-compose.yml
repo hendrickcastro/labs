@@ -4,7 +4,7 @@ services:
     image: jenkins/jenkins:lts
     container_name: jenkins
     ports:
-      - 8080:8080
+      - 4000:8080
       - 50001:50000
     volumes:
       - $PWD/data:/var/jenkins_home
